@@ -1,0 +1,27 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Your cart</span>
+    <span class="badge badge-secondary badge-pill">{{getItems().length}}</span>
+</h4>
+<ul class="list-group"
+    *ngIf="getItems().length > 0">
+    <li class="list-group-item d-flex justify-content-between lh-condensed"
+        *ngFor="let boughtItem of getItems()">
+        <div>
+            <h6 class="my-0">{{boughtItem.title}}</h6>
+            <small class="text-muted">{{boughtItem.desc}}</small>
+        </div>
+        <div>
+            <span class="text-muted">{{boughtItem.price | price}}</span>
+            <a href="#"
+               (click)="remove(boughtItem)"><i class="bi bi-trash"></i></a>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between"
+        *ngIf="total!== 0">
+        <span>Total (EUR)</span>
+        <strong>{{getTotal() | price}}</strong>
+    </li>
+</ul>
+<div>
+    <app-confirm></app-confirm>
+</div>

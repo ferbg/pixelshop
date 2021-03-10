@@ -1,0 +1,23 @@
+<main role="main"
+      class="container">
+
+    <div class="starter-template">
+        <h1>Stateful</h1>
+        <p class="lead">Ejemplo de componete stateful.</p>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row"
+                     *ngIf="shopModel.shopItems">
+                    <div class="col-4"
+                         *ngFor="let item of shopModel.shopItems">
+                        <app-stateless [product]="item"
+                                       (doAction)="addToCart($event)"></app-stateless>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <app-summary (onRemove)="remove($event)"></app-summary>
+            </div>
+        </div>
+    </div>
+</main> <!-- /.container -->
