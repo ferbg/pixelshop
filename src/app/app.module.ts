@@ -14,6 +14,8 @@ import { PricePipe } from './price.pipe';
 //  Services
 import { CartService } from './cart.service';
 import { SummaryComponent } from './summary/summary.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { SummaryComponent } from './summary/summary.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     CartService,
